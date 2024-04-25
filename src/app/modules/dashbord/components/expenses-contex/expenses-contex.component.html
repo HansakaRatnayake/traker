@@ -1,0 +1,17 @@
+<div class="btngroup-outer ">
+<!--  <div class="btn-group" role="group" aria-label="Basic mixed styles example">-->
+<!--    <button type="button" class="btn btn-danger" routerLink="/dashbord/process/expenses/new">New Expense</button>-->
+<!--    <button type="button" class="btn btn-success" routerLink="/dashbord/process/expenses/view">View Expenses</button>-->
+<!--  </div>-->
+  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked  routerLink="/dashbord/process/expenses/new">
+    <label class="btn btn-outline-primary" for="btnradio1">Add New Expense</label>
+
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" routerLink="/dashbord/process/expenses/view">
+    <label class="btn btn-outline-primary" for="btnradio2">View Expenses</label>
+
+  </div>
+
+</div>
+<hr>
+<router-outlet></router-outlet>
