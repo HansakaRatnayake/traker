@@ -1,0 +1,15 @@
+.example-margin {
+  margin: 0 10px;
+}
+
+.loading-outer{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  position: fixed;
+  background-color: white;
+
+}

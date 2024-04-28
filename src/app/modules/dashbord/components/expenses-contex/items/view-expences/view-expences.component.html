@@ -1,0 +1,86 @@
+<form [formGroup]="expencesform" (ngSubmit)="findExpence()">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <label for="txtid" class="form-label">#Id</label>
+          <input type="text" id="txtid" class="form-control" formControlName="id">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="txttitle" class="form-label">Title</label>
+          <input type="text" id="txttitle" class="form-control" formControlName="title">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="txtdesc" class="form-label">Description</label>
+          <input type="text" id="txtdesc" class="form-control" formControlName="description">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="txtcost" class="form-label" >Cost</label>
+          <input type="number" id="txtcost" class="form-control" formControlName="cost">
+        </div>
+      </div>
+      <div class="col-12">
+        <label style="visibility: hidden" class="form-label">###</label>
+        <button type="submit" class="form-control btn btn-danger" [disabled]="expencesform.invalid">Find Expens</button>
+      </div>
+
+      <div class="col-12">
+        <br>
+        <br>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> #Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef> Title </th>
+              <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="cost">
+              <th mat-header-cell *matHeaderCellDef> Cost </th>
+              <td mat-cell *matCellDef="let element"> {{element.cost | currency:'LKR'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="controls">
+              <th mat-header-cell *matHeaderCellDef> Controls </th>
+              <td mat-cell *matCellDef="let element">
+                <div class="btncontrol-outer">
+                <button type="button" mat-raised-button color="primary" (click)="updateExpence(element)">Update</button>&nbsp;&nbsp;
+                <button type="button" mat-stroked-button color="warn" (click)="deleteExpence(element.id)">Delete</button>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

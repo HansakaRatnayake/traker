@@ -4,6 +4,7 @@ export class Expens{
    private description!:string;
    private cost!:number
 
+
   constructor(title:string,description:string,cost:number,id?:string) {
     this.title = title;
     this.description = description;
@@ -11,6 +12,7 @@ export class Expens{
     this.id = id;
 
   }
+  public Expens(){}
 
   getId(): any {
     return this.id;

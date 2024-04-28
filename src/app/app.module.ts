@@ -14,7 +14,11 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import firebase from "firebase/compat";
-import { LoadingComponent } from './core/loading/loading.component';
+import {MatProgressSpinner, MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {LoginComponent} from "./modules/security/components/login/login.component";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {HttpmanagerInterceptor} from "./interceptor/httpmanager.interceptor";
+
 
 
 
@@ -22,8 +26,7 @@ import { LoadingComponent } from './core/loading/loading.component';
   declarations: [
     AppComponent,
     NotFoundPageComponent,
-    MainFooterComponent,
-    LoadingComponent
+    MainFooterComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -31,15 +34,15 @@ import { LoadingComponent } from './core/loading/loading.component';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    SecurityModule
-
-
-
+    SecurityModule,
+    MatProgressSpinner,
+    MatProgressSpinnerModule,
 
 
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {provide:HTTP_INTERCEPTORS,useClass:HttpmanagerInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]
 })

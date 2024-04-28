@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Update Expenses</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="expencesupdateform">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="txttitle" class="form-label">Title</label>
+            <input type="text" id="txttitle" class="form-control" formControlName="title">
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="txtdesc" class="form-label">Description</label>
+            <input type="text" id="txtdesc" class="form-control" formControlName="description" style="border: none">
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="txtcost" class="form-label" >Cost</label>
+            <input type="number" id="txtcost" class="form-control" formControlName="cost" style="border: none">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="accent" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="warn" (click)="openDialog('0ms', '0ms')" [disabled]="expencesupdateform?.invalid" >Update</button>
+</mat-dialog-actions>
+

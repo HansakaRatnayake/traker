@@ -24,6 +24,11 @@ export class ExpenseService {
   }
 
   update(data:Expens){
-    return this.firestore.doc(`expenses/${data}`).update(data);
+    return this.firestore.doc(`expenses/${data.getId()}`).update({...data});
+  }
+
+  delete(id:string){
+    console.log(id);
+    return this.firestore.doc(`expenses/${id}`).delete();
   }
 }
