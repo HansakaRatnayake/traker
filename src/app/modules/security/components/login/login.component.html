@@ -1,0 +1,49 @@
+<mat-grid-list cols="1" rowHeight="100vh">
+  <mat-grid-tile>
+    <div class="login-outer">
+
+      <div class="login-header">
+        <h2>Tracking System Login</h2>
+
+      </div>
+
+      <div class="login-content">
+        <form [formGroup]="loginform" (ngSubmit)="loginWithEmail()">
+          <mat-form-field appearance="outline">
+            <mat-label >email</mat-label>
+            <input formControlName="email" matInput type="text">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <div class="btn-container">
+            <button type="submit" mat-flat-button color="primary" [disabled]="loginform.invalid">Login</button>
+            <button mat-stroked-button color="accent" routerLink="/security/signup">Signup</button>
+
+          </div>
+
+
+        </form>
+
+      </div>
+      <p style="color: rgba(22, 160, 133,1.0)">or signup with</p>
+      <div class="login-footer">
+        <button btn-google mat-stroked-button color="accent" type="button" (click)="loginWithGoogle()"><img src="assets/google-icon-logo.png"></button>
+        <button btn-facebook mat-stroked-button color="accent"><img src="assets/facebook.png"></button>
+        <button btn-github mat-stroked-button color="accent"><img src="assets/github.png"></button>
+      </div>
+
+
+    </div>
+
+  </mat-grid-tile>
+</mat-grid-list>
+
+
